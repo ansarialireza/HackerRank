@@ -1,29 +1,38 @@
-def noonerize(numbers):
-    if type(numbers[0])==int and type(numbers[1])==int:
-        str1=str(numbers[0])
-        str2=str(numbers[1])
-        # print(str1,str2)
-        temp1=str1[0]
-        temp2=str2[0]
-        str1=(str1.replace(str1[0],temp2))
-        print(str1[0],str2[0])
-        str2=int(str2.replace(str2[0],temp1))
-        # print(str1,str2)
+#!/bin/python3
 
-        # return abs(str1-str2)
-    else:
-        return 'invalid array'
+import math
+import os
+import random
+import re
+import sys
 
-# arr=[123, 456]
-arr=[55, 63]
-#65 53
-# 66 53
-# 53
-#12
-print(noonerize(arr))
+#
+# Complete the 'gradingStudents' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts INTEGER_ARRAY grades as parameter.
+def gradingStudents(grades):
+    
+    round_num = lambda num : (((num // 5)+1)*5)
+    for i in range(0,len(grades)):
+        print(i)
+        if grades[i] >= 38 :
+            state = round_num(grades[i])-grades[i]
+            if state < 3:
+                grades[i]+=state
+        
+    return grades
 
+if __name__ == '__main__':
+    grades_count = int(input().strip())
 
-# [123, 456] = 423 - 156 = 267
+    grades = []
 
+    for _ in range(grades_count):
+        grades_item = int(input().strip())
+        grades.append(grades_item)
 
+    result = gradingStudents(grades)
+
+    print('\n'.join(map(str, result)))
 
